@@ -11,8 +11,4 @@ class User extends Model
     public $email;
     public $name;
 
-    public function getModelName()
-    {
-        // TODO: Implement getModelName() method.
-    }
 }

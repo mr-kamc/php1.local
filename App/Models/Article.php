@@ -13,8 +13,4 @@ class Article extends Model
     public $title;
     public $content;
 
-    public function getModelName()
-    {
-        // TODO: Implement getModelName() method.
-    }
 }

@@ -8,8 +8,6 @@ abstract class Model
 
     public $id;
 
-    abstract public function getModelName();
-
     public static function findAll()
     {
         $db = new Db();
