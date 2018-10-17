@@ -15,4 +15,23 @@ class Db
             ';dbname=' . $config['dbname'], $config['user'], $config['password']);
     }
 
+    public function query($sql, $class, $data = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($data);
+        $data = $sth->fetchAll();
+        $ret = [];
+        foreach ($data as $row) {
+            $item = new $class;
+            foreach ($row as $key => $val) {
+                if (is_numeric($key)){
+                    continue;
+                }
+                $item->$key = $val;
+            }
+            $ret[] = $item;
+        }
+        return $ret;
+    }
+
 }

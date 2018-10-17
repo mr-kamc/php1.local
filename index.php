@@ -2,4 +2,6 @@
 
 require __DIR__ . '/autoload.php';
 
-new \App\Db();
+$data = \App\Models\Article::findAll();
+
+var_dump($data);
