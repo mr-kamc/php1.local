@@ -17,21 +17,17 @@ class Db
 
     public function query($sql, $class, $data = [])
     {
-        $sth = $this->dbh->prepare($sql);
+        $sth = $this->dbh->prepare($sql, $data);
         $sth->execute($data);
-        $data = $sth->fetchAll();
-        $ret = [];
-        foreach ($data as $row) {
-            $item = new $class;
-            foreach ($row as $key => $val) {
-                if (is_numeric($key)){
-                    continue;
-                }
-                $item->$key = $val;
-            }
-            $ret[] = $item;
-        }
-        return $ret;
+        $data = $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+        return $data;
+    }
+
+    public function execute($sql, $class, $data = [])
+    {
+        $sth = $this->dbh->prepare($sql, $data);
+        $res = $sth->execute($data);
+        return $res;
     }
 
 }
