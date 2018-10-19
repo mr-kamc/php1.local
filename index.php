@@ -2,10 +2,8 @@
 
 require __DIR__ . '/autoload.php';
 
-
-$art = new \App\Models\Article();
-$res = $art->findLast(2);
-var_dump($res);
+$news = \App\Models\Article::findLast(3);
+include __DIR__ . '/templates/news/index.php';
 
 
 /*

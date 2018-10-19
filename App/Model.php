@@ -25,7 +25,7 @@ abstract class Model
         return $res ?: false;
     }
 
-    public function findLast($qt)
+    public static function findLast($qt)
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $qt;
