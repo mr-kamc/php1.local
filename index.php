@@ -4,7 +4,7 @@ require __DIR__ . '/autoload.php';
 
 
 $art = new \App\Models\Article();
-$res = $art->findById(1);
+$res = $art->findLast(2);
 var_dump($res);
 
 

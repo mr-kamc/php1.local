@@ -14,14 +14,4 @@ class Article extends Model
     public $title;
     public $content;
 
-    public function findById($id)
-    {
-        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE id=:id';
-        $data = [':id' => $id];
-        $db = new Db();
-        $res = $db->query($sql, self::class, $data);
-        return $res;
-    }
-
-
 }

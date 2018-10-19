@@ -23,7 +23,7 @@ class Db
         return $data;
     }
 
-    public function execute($sql, $class, $data = [])
+    public function execute($sql, $data = [])
     {
         $sth = $this->dbh->prepare($sql, $data);
         $res = $sth->execute($data);
