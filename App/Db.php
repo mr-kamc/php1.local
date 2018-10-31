@@ -30,4 +30,9 @@ class Db
         return $res;
     }
 
+    public function getLastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
+
 }
