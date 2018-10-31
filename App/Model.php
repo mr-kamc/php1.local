@@ -41,8 +41,8 @@ abstract class Model
         $cols = [];
         $data = [];
 
-        foreach ($fields as $name=>$value){
-            if ('id' == $name){
+        foreach ($fields as $name => $value) {
+            if ('id' == $name) {
                 continue;
             }
             $cols[] = $name;
@@ -56,6 +56,29 @@ abstract class Model
         $db->execute($sql, $data);
 
         $this->id = $db->getLastInsertId();
+    }
+
+    public function update()
+    {
+        $fields = get_object_vars($this);
+
+        $cols = [];
+        $data = [];
+
+        foreach ($fields as $name => $value) {
+            $data[':' . $name] = $value;
+            if ('id' == $name) {
+                continue;
+            }
+            $cols[] = $name . '=:' . $name;
+        }
+
+        $sql = 'UPDATE ' . static::TABLE .
+            ' SET ' . implode(',', $cols) .
+            ' WHERE id=:id';
+
+        $db = new Db();
+        $db->execute($sql, $data);
     }
 
 }
