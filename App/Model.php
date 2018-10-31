@@ -81,4 +81,20 @@ abstract class Model
         $db->execute($sql, $data);
     }
 
+    public function save()
+    {
+        if (empty($this->id)) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+    }
+
+    public function delete()
+    {
+        $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
+        $db = new Db();
+        $db->execute($sql, [':id' => $this->id]);
+    }
+
 }
