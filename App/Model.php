@@ -22,7 +22,7 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
         $data = [':id' => $id];
         $res = $db->query($sql, static::class, $data);
-        return $res ?: false;
+        return $res[0] ?: false;
     }
 
     public static function findLast($qt)

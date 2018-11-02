@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>News</title>
+    <title>Admin-panel</title>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -25,13 +25,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">News</a>
+        <a class="navbar-brand" href="#">Admin-panel</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/App/Controllers/admin.php">Admin-panel</a>
+                <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
@@ -54,13 +54,17 @@
 </div>
 
 <div class="container">
+    <a class="btn btn-success" href="/templates/news/admin/create.php">Create article</a>
+
     <div class="row">
         <?php foreach ($news as $article):?>
-        <div class="col-md-4">
-            <h2><?php echo $article->title;?></h2>
-            <p><?php echo mb_substr($article->content, 0, 100) . '...';?></p>
-            <p><a class="btn btn-secondary" href="/article.php?id=<?php echo $article->id;?>">View detail &raquo;</a></p>
-        </div>
+            <div class="col-md-4">
+                <h2><?php echo $article->title;?></h2>
+                <p><?php echo mb_substr($article->content, 0, 100) . '...';?></p>
+                <p><a class="btn btn-secondary" href="/article.php?id=<?php echo $article->id;?>">View detail &raquo;</a></p>
+                <p><a class="btn btn-danger" href="/App/Controllers/delete.php?id=<?php echo $article->id;?>">delete &raquo;</a></p>
+                <p><a class="btn btn-warning" href="/App/Controllers/edit.php?id=<?php echo $article->id;?>">edit &raquo;</a></p>
+            </div>
         <?php endforeach; ?>
     </div>
     <hr>
