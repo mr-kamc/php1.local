@@ -59,7 +59,7 @@
         <div class="col-md-4">
             <h2><?php echo $article->title;?></h2>
             <p><?php echo mb_substr($article->content, 0, 100) . '...';?></p>
-            <p><a class="btn btn-secondary" href="/article.php?id=<?php echo $article->id;?>">View detail &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="/App/Controllers/article.php?id=<?php echo $article->id;?>">View detail &raquo;</a></p>
         </div>
         <?php endforeach; ?>
     </div>

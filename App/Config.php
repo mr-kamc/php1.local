@@ -5,11 +5,20 @@ namespace App;
 
 class Config
 {
+    protected static $instance;
     public $data;
 
-    public function __construct()
+    protected function __construct()
     {
         $this->data = include __DIR__ . '/../config.php';
+    }
+
+    public static function getInstance()
+    {
+        if (null === self::$instance){
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
 }
